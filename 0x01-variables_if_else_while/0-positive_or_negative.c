@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 /**
- * program with main function that prints positive, zero and negative
+ * main - Entry point
  *
- * return 0
+ *Description:The program evaluates conditions for if and returns value for n
+ *
+ * Return: Always 0
  */
-
 int main(void)
 {
 	int n;
@@ -15,13 +16,16 @@ int main(void)
 	n = rand() - RAND_MAX / 2;
 	/* code to evaluate and execute if statement */
 	if (n > 0)
+		/* evaluate and print the nature of integer n*/
 	{printf("%i is positive\n", n);
 	}
 	else if (n == 0)
+		/*evaluate and print the nature of integer n*/
 	{
 		printf("%i is zero\n", n);
 	}
 	else
+		/*evaluate and print the nature of n*/
 	{
 		printf("%i is negative\n", n);
 	}
