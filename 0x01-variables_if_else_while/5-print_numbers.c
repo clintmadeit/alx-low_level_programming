@@ -10,8 +10,11 @@ int main(void)
 {
 int n;
 
-while (n >= 0 && n < 10)
+while (n >= 0)
+
 	n++;
+
+if (n < 10)
 
 {
 	printf("%d\n", n);
