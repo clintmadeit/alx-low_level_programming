@@ -15,7 +15,7 @@ for (ch = 'a' ; ch <= 'z' ; ch++)
 	putchar(ch);
 }
 
-for (ch != 'e' ; ch != 'q' ; ch++ )
+for (ch != 'e' ; ch != 'q' ; )
 
 {
 	putchar(ch);
