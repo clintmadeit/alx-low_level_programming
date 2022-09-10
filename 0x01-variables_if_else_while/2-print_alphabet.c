@@ -2,14 +2,14 @@
 /*
  * Main - Entry point: prints alphabets in lower case to the screen
  *
- * Description: a function that puts alphabetic characters on screen
+ * Description: "a function that puts alphabetic characters on screen"
  *
  * Return: Always 0
  *
  */
 int main(void)
 {
-	int ch;
+	char ch;
 	{
 	for (ch = 'a'; ch <= 'z'; ch++)
 
@@ -17,7 +17,7 @@ int main(void)
 	}
 
 	{
-	putchar("\n");
+	putchar('\n');
 	}
 	return (0);
 }
