@@ -1,20 +1,23 @@
 #include <stdio.h>
-/**
- * main - Entry point
+/*
+ * Main - Entry point: prints alphabets in lower case to the screen
  *
- * This program executes the putchar function and returns a true output
- * Return:0 (success)
+ * Description: a function that puts alphabetic characters on screen
+ *
+ * Return: Always 0
+ *
  */
-char main(void)
+int main(void)
 {
-	char ch;
-for (ch = 'a'; ch <= 'z'; ch++)
-{
-	putchar(ch);
-}
-{
-putchar("\n");
-}
-return (0);
-}
+	int ch;
+	{
+	for (ch = 'a'; ch <= 'z'; ch++)
 
+	putchar(ch);
+	}
+
+	{
+	putchar("\n");
+	}
+	return (0);
+}
