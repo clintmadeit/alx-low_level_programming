@@ -9,12 +9,10 @@
 int main(void)
 {
 int n;
-
-while (n >= 0)
+n = 0;
+while (n < 10)
 
 	n++;
-
-if (n < 10)
 
 {
 	printf("%d\n", n);
