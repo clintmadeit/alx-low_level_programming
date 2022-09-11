@@ -20,7 +20,7 @@ int main(void)
 
 				putchar(d2);
 
-				if (!(d1 == '9' && d2 == '8'))
+				if (!(d1 == '8' && d2 == '9'))
 
 				{	putchar(',');
 
