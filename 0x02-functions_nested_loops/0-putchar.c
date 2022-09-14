@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include "main.h"
 /**
  * main - entry point
  * program description
@@ -8,13 +8,18 @@
  */
 int main(void)
 {
-int main;
-	{
-		printf("_putchar");
-	}
+int _putchar;
 
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
 
-printf("\n");
+putchar('\n');
 
 return (0);
 }
