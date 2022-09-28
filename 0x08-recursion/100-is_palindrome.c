@@ -1,7 +1,7 @@
-/*                                                                                                                                    
+/**                                                                                                                                    
  * File: 100-is_palindrome.c                                                                                                          
  * Auth: sami                                                                                                                         
- */                                                                                                                                   
+ **/                                                                                                                                   
                                                                                                                                       
 #include "main.h"                                                                                                                     
                                                                                                                                       
@@ -12,9 +12,9 @@ int is_palindrome(char *s);
 /**                                                                                                                                   
  * find_strlen - Returns the length of a string.                                                                                      
  * @s: The string to be measured.                                                                                                     
- *                                                                                                                                    
  * Return: The length of the string.                                                                                                  
- */                                                                                                                                   
+ **/
+
 int find_strlen(char *s)                                                                                                              
 {                                                                                                                                     
         int len = 0;                                                                                                                  
@@ -27,4 +27,3 @@ int find_strlen(char *s)
                                                                                                                                       
         return (len);                                                                                                                 
 }
-
