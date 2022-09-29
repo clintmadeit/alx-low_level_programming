@@ -1,45 +1,89 @@
-#include "main.h"
-
-/**
- * _strlen_recursion - returns the length of a string.
- * @s: string
- * Return: the length of a string.
+/*                                                                                                                                    
+ * File: 101-wildcmp.c                                                                                                                
+ * Auth: sam                                                                                                                          
+ */                                                                                                                                   
+                                                                                                                                      
+#include "main.h"                                                                                                                     
+                                                                                                                                      
+int strlen_no_wilds(char *str);                                                                                                       
+void iterate_wild(char **wildstr);                                                                                                    
+char *postfix_match(char *str, char *postfix);                                                                                        
+int wildcmp(char *s1, char *s2);                                                                                                      
+                                                                                                                                      
+/**                                                                                                                                   
+ * strlen_no_wilds - Returns the length of a string,                                                                                  
+ *                   ignoring wildcard characters.                                                                                    
+ * @str: The string to be measured.                                                                                                   
+ *                                                                                                                                    
+ * Return: The length.                                                                                                                
  */
-int _strlen_recursion(char *s)
-{
-	if (*s == '\0')
-		return (0);
-	else
-		return (1 + _strlen_recursion(s + 1));
+int strlen_no_wilds(char *str)                                                                                                        
+{                                                                                                                                     
+        int len = 0, index = 0;                                                                                                       
+                                                                                                                                      
+        if (*(str + index))                                                                                                           
+        {                                                                                                                             
+                if (*str != '*')                                                                                                      
+                        len++;                                                                                                        
+                                                                                                                                      
+                index++;                                                                                                              
+                len += strlen_no_wilds(str + index);                                                                                  
+        }                                                                                                                             
+                                                                                                                                      
+        return (len);                                                                                                                 
+}                                                                                                                                     
+                                                                                                                                      
+/**                                                                                                                                   
+ * iterate_wild - Iterates through a string located at a wildcard                                                                     
+ *                until it points to a non-wildcard character.                                                                        
+ * @wildstr: The string to be iterated through.                                                                                       
+ */                                                                                                                                   
+void iterate_wild(char **wildstr)                                                                                                     
+{                                                                                                                                     
+        if (**wildstr == '*')                                                                                                         
+        {                                                                                                                             
+                (*wildstr)++;                                                                                                         
+                iterate_wild(wildstr);                                                                                                
+        }                                                                                                                             
+}
+/**                                                                                                                                   
+ * postfix_match - Checks if a string str matches the postfix of                                                                      
+ * @str: The string to be matched.                                                                                                    
+ * @postfix: The postfix.                                                                                                             
+ * Return: If str and postfix are identical - a pointer to the null byte                                                              
+ * Otherwise - a pointer to the first unmatched character in postfix.                                                         
+ **/                                                                                                                                   
+char *postfix_match(char *str, char *postfix)                                                                                         
+{                                                                                                                                     
+        int str_len = strlen_no_wilds(str) - 1;                                                                                       
+        int postfix_len = strlen_no_wilds(postfix) - 1;                                                                               
+                                                                                                                                      
+        if (*postfix == '*')                                                                                                          
+                iterate_wild(&postfix);                                                                                               
+        if (*(str + str_len - postfix_len) == *postfix && *postfix != '\0')                                                           
+        {                                                                                                                             
+                postfix++;                                                                                                            
+                return (postfix_match(str, postfix));                                                                                 
+        }                                                                                                                             
+        return (postfix);                                                                                                             
 }
 
-/**
- * comparator - compares each character of the string.
- * @s: string
- * @n1: smallest iterator.
- * @n2: biggest iterator.
- * Return: .
- */
-int comparator(char *s, int n1, int n2)
-{
-	if (*(s + n1) == *(s + n2))
-	{
-		if (n1 == n2 || n1 == n2 + 1)
-			return (1);
-		return (0 + comparator(s, n1 + 1, n2 - 1));
-	}
-	return (0);
+/**                                                                             
+ * wildcmp - Compares two strings, considering wildcard characters.                                                                   
+ * @s1: The first string to be compared.                                                                                              
+ * @s2: The second string to be compared - may contain wildcards.                                                                                                * Return: If the strings can be considered identical - 1.                                                                     
+ * Otherwise - 0.                                                                                                             
+ **/                                                                                                                                   
+int wildcmp(char *s1, char *s2)                                                                                                       
+{                                                                                                                                     
+        if (*s2 == '*')                                                                                                               
+        {                                                                                                                             
+                iterate_wild(&s2);                                                                                                    
+                s2 = postfix_match(s1, s2);                                                                                           
+        }                                                                                                                             
+        if (*s2 == '\0')                                                                                                              
+                return (1);                                                                                                           
+        if (*s1 != *s2)                                                                                                               
+                return (0);                                                                                                           
+        return (wildcmp(++s1, ++s2));                                                                                                 
 }
-
-/**
- * is_palindrome - detects if a string is a palindrome.
- * @s: string.
- * Return: 1 if s is a palindrome, 0 if not.
- */
-int is_palindrome(char *s)
-{
-	if (*s == '\0')
-		return (1);
-	return (comparator(s, 0, _strlen_recursion(s) - 1));
-}
-
