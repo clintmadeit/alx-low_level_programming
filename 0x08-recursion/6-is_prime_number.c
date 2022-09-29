@@ -1,72 +1,28 @@
 #include "main.h"
 
 /**
-* prime2 - Makes possible to evaluate from 1 to n
-* @a: same number as n
-* @b: number that iterates from 1 to n
-* Return: On success 1.
-* On error, -1 is returned, and errno is set appropriately.
-**/
-
-int prime2(int a, int b)
-
+ * is_prime_number -> prime identifier
+ */
+int is_prime_number(int n)
 {
-
-	if (a == b)
-
-		return (1);
-
-	else if (a % b == 0)
-
-		return (0);
-
-	return (prime2(a, b + 1));
+	return (check_prime(n, 1))
 }
+
 
 /**
-* is_prime_number - checks if a number is prime
-* @n: Number Integer
-* Return: On success 1.
-* On error, -1 is returned, and errno is set appropriately.
-**/
+ * check_prime -> it checks prime numbers
+ * @n: number
+ * @i: iterator
+ * Return: a 1 or 0
+ */
 
-int is_prime_number(int n)
-
+int check_prime(int n, int i)
 {
-
 	if (n <= 1)
-
 		return (0);
-
-	return (prime2(n, 2));
+	if (n % i == 0 && i > 1)
+		return (0);
+	if ((n / i) < i)
+		print(1);
+	return (check_prime(n, i + 1));
 }
-
-Main.h
-
-int _putchar(char c);
-
-void _puts_recursion(char *s);
-
-
-void _print_rev_recursion(char *s);
-
-
-int _strlen_recursion(char *s);
-
-
-int factorial(int n);
-
-
-int _pow_recursion(int x, int y);
-
-
-int _sqrt_recursion(int n);
-
-
-int is_prime_number(int n);
-
-
-int is_palindrome(char *s);
-
-
-int wildcmp(char *s1, char *s2);
